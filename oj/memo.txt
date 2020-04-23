@@ -1,0 +1,3 @@
+oj.py --atcoder コンテスト名 問題名 -i 提出ファイル名
+sudo oj.py --atcoder abc163 a -i /Users/kouki/files/programs/c++/ABC163/a.cpp
+sudo oj.py --atcoder arc010 a -i /Users/kouki/files/programs/c++/asakatsu/0420a.cpp
