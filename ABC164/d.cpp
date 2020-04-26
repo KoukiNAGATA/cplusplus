@@ -27,17 +27,21 @@ int main() {
     string s;
     cin >> s;
     siz = s.size();
-    vector<vector<int>> dp(siz, vector<int>(siz, inf));
-    //1文字目を初期化
-    //dpでi~j桁目の2019で割った余りを求めていく
-    REP(i, siz){
-        dp[i][i] = (int)(s[i] - '0');//i桁目を代入
-        FOR(j, i+1, siz){
-            dp[i][j] = (dp[i][j-1]*10 + (int)(s[j] - '0'))%2019;
-            if(dp[i][j] == 0) ans ++;
-        }
+    vector<int> dp(siz+1);
+    //累積和で初期化。右端までの余りが0のものを考慮する必要がある。
+    dp[siz] = 0;
+    int tmp = 1;
+    REPR(i, siz){//i桁目から右の2019で割った余りの2019で割った余り
+        dp[i] = (dp[i+1] + (int)(s[i] - '0')*tmp)%2019;
+        tmp *= 10; 
+        tmp %= 2019;
     }
-
+    
+    vector<int> cnt(2019, 0);
+    REP(i, siz+1){//i桁目から右の2019で割った余りを2019個のバケツに放り込んでいく。一致したらansを足す。
+        ans += cnt[dp[i]];
+        cnt[dp[i]]++;
+    }
     cout << ans << endl;
     return 0;
 }
