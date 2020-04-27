@@ -29,6 +29,6 @@ int main() {
     ans = 0;
     vll dp(a+10, inf);//初期化忘れない
 
-    cout << b << endl;
+    cout << b <<"\n";
 	return 0;
 }

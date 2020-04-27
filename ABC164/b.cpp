@@ -24,17 +24,11 @@ int main() {
     //cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
-    ll a, b, c, d;
-    cin >> a >> b >> c >> d;
-    while(a > 0 && c > 0){
-        a -= d;
-        c -= b;
-    }
-
-    if(c <= 0){//aが先攻なので、cが0以下ならaの勝ち
-        cout << "Yes" << endl;
-    }else{
-        cout << "No" << endl;
-    }
+    ll a,b,c,d;
+    cin>>a>>b>>c>>d;
+    //そのまま割ると割り切れない場合は1回少なくなってしまう。1回多くはならないギリギリ=(ダメージ-1)を足す。
+    ll x = (a+d-1)/d;
+    ll y = (c+b-1)/b;
+    cout<<(x>=y?"Yes":"No")<<"\n";
 	return 0;
 }
