@@ -21,12 +21,13 @@ int main() {
     //cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
-    ll n, ans, cnt_r, cnt_g, cnt_b;
+    ll n;
     cin >> n;
-    ans = 0;
-    cnt_r = 0;
-    cnt_g = 0;
-    cnt_b = 0;
+    //まとめて宣言すると初期化されるのは右端のみ→別々で宣言！
+    ll ans = 0;
+    ll cnt_r = 0;
+    ll cnt_g = 0;
+    ll cnt_b = 0;
     vector<char> s(n);
     char tmp;
 
