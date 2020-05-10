@@ -42,7 +42,7 @@ int main() {
     ans = inf;
     vvll a(n+1, vll(m+1, 0));
     //input
-    FOR(i, 1, n) REP(j, m+1) cin >> a[i][j];
+    REP(i, n) REP(j, m+1) cin >> a[i][j];
     //bit full search
     REP(bit, 1 << n){
         isSkill(bit, a);
