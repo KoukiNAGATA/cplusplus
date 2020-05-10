@@ -1,4 +1,12 @@
-#include <bits/stdc++.h>
+#include<iostream>
+#include<vector>
+#include<string>
+#include<map>
+#include<utility>
+#include<algorithm>
+#include<queue>
+#include<cmath>
+#include<iomanip>
 #define REP(i, n) for(ll i = 0; i < n; i++)
 #define REPR(i, n) for(ll i = n - 1; i >= 0; i--)
 #define FOR(i, m, n) for(ll i = m; i <= n; i++)
@@ -16,11 +24,15 @@ int main() {
     //cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
-    ll a, b, ans;
-    cin >> a >> b;
-    ans = 0;
-    vll dp(a+10, inf);//初期化忘れない
+    ll n, m, k, ans;
+    cin >> n >> m >> k;
+    ans = m;
+    vll dp(n+1, 0);//ダメな色の列
+    FOR(i, 2, n){
+        dp[i] = m - dp[i-1];
+        ans *= dp[i];
+    }
 
-    cout << b <<"\n";
+    cout << ans / 998244353 <<"\n";
 	return 0;
 }

@@ -1,4 +1,12 @@
-#include <bits/stdc++.h>
+#include<iostream>
+#include<vector>
+#include<string>
+#include<map>
+#include<utility>
+#include<algorithm>
+#include<queue>
+#include<cmath>
+#include<iomanip>
 #define REP(i, n) for(ll i = 0; i < n; i++)
 #define REPR(i, n) for(ll i = n - 1; i >= 0; i--)
 #define FOR(i, m, n) for(ll i = m; i <= n; i++)
@@ -16,11 +24,15 @@ int main() {
     //cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
-    ll a, b, ans;
-    cin >> a >> b;
+    ll a, b, c, k, ans;
+    cin >> a >> b >> c >> k;
     ans = 0;
-    vll dp(a+10, inf);//初期化忘れない
-
-    cout << b <<"\n";
+    if(a >= k){
+        cout << k <<"\n";
+    }else if( a + b >= k){
+        cout << a <<"\n";
+    }else{
+        cout << a - (k-a-b) <<"\n";
+    }
 	return 0;
 }
