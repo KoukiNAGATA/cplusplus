@@ -16,7 +16,7 @@ using P = pair<ll, ll>;
 //mod...オーバーフローしないようにその都度割っていく！
 //階乗などを配列で持っておくことで計算量を減らす！
 
-ll n, m, k, ans, p;
+ll n;
 ll fact[2*MAX+10];//階乗(factorial)
 ll invfact[2*MAX+10];//階乗の逆元
 
@@ -36,20 +36,11 @@ ll combination(ll A,ll B){//combination(O(1))
 	return fact[A]*invfact[A-B]%mod*invfact[B]%mod;
 }
 
-int main(){
-    cin>>n>>m>>k;
-    ans = 0;
+int main(){//階乗と逆元のテーブル作成
+    cin>>n;
     fact[0] = 1;//0!
 	FOR(i, 1, n) fact[i] = fact[i-1]*i%mod;//fact[i] : i!の配列(factorial)
 
     invfact[n] = modpow(fact[n], mod-2);//フェルマーの小定理よりaの逆元はa^(mod-2)
     FORR(i, n-1, 0) invfact[i]=invfact[i+1]*(i+1)%mod;//(i+1)!の逆元にi+1かけてるだけ
-
-    p = modpow(m-1,n-k-1);
-	FOR(i, n-k, n){//pow(m-1,n-i-1)の更新をループ内で行ってO(N)に
-		ans = (ans+m*p%mod*combination(n-1,i-1)%mod)%mod;
-		p = p*(m-1)%mod;
-	}
-	cout << ans <<"\n";
-	return 0;
 }
