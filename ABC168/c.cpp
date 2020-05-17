@@ -11,17 +11,18 @@ using ll = long long;
 using vll = vector<ll>;
 using vvll = vector<vector<ll>>;
 using P = pair<ll, ll>;
-using graph = vector<vector<int>>;
+static const double pi = 3.141592653589793;
 
 int main() {
     //cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
-    ll a, b, ans;
-    cin >> a >> b;
-    ans = 0;
-    vll dp(a+10, inf);//初期化忘れない
+    double a, b, h, m, ans;
+    cin >> a >> b >> h >> m;
+    double x = a*(cos(pi*(h/6+m/360)))-b*(cos(pi*(m/30)));
+    double y = a*(sin(pi*(h/6+m/360)))-b*(sin(pi*(m/30)));
+    ans = sqrt(x*x + y*y);
 
-    cout << b <<"\n";
+    cout << ans <<"\n";
 	return 0;
 }

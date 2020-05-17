@@ -11,17 +11,19 @@ using ll = long long;
 using vll = vector<ll>;
 using vvll = vector<vector<ll>>;
 using P = pair<ll, ll>;
-using graph = vector<vector<int>>;
 
 int main() {
     //cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
-    ll a, b, ans;
-    cin >> a >> b;
-    ans = 0;
-    vll dp(a+10, inf);//初期化忘れない
-
-    cout << b <<"\n";
+    string s;
+    ll k;
+    cin >> k >> s;
+    ll num = s.size();
+    if(num<=k)cout << s <<"\n";
+    else{
+        s = s.substr(0, k);
+        cout << s << "..." <<"\n";
+    }
 	return 0;
 }
