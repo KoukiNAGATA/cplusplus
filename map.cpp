@@ -11,6 +11,7 @@ using ll = long long;
 using vll = vector<ll>;
 using vvll = vector<vector<ll>>;
 using P = pair<ll, ll>;
+using graph = vector<vector<int>>;
 
 //mapの使い方。数え上げ。O(n)
 int main() {
