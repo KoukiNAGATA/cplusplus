@@ -1,13 +1,8 @@
-#include<iostream>
-#include<vector>
-#include<string>
-#include<map>
-#include<utility>
-#include<algorithm>
-#define REP(i, n) for(int i = 0; i < n; i++)
-#define REPR(i, n) for(int i = n - 1; i >= 0; i--)
-#define FOR(i, m, n) for(int i = m; i <= n; i++)
-#define FORR(i, m, n) for(int i = m; i >= n; i--)
+#include <bits/stdc++.h>
+#define REP(i, n) for(ll i = 0; i < n; i++)
+#define REPR(i, n) for(ll i = n - 1; i >= 0; i--)
+#define FOR(i, m, n) for(ll i = m; i <= n; i++)
+#define FORR(i, m, n) for(ll i = m; i >= n; i--)
 #define SORT(v, n) sort(v, v+n)
 #define MAX 100000
 #define inf 1000000007
@@ -16,7 +11,7 @@ using ll = long long;
 using vll = vector<ll>;
 using vvll = vector<vector<ll>>;
 using P = pair<ll, ll>;
-using p = pair<int, int>;
+using graph = vector<vector<int>>;
 
 int main() {
     //cin高速化
@@ -41,14 +36,14 @@ int main() {
     //各点までの最小flip回数をdpで求めていく. 行と列それぞれについて隣り合う#がないか調べて, あればまとめてひっくり返す.
     REP(i, h){
         REP(j, w){
-            if (i > 0){//行方向の隣が#ならひっくり返しはない
+            if (i > 0){
                 c = grid[i][j];
-				if(grid[i-1][j] == 1) c = 0;
+				if(grid[i-1][j] == 1) c = 0;//行方向の隣が#ならひっくり返しはない
 				dp[i][j] = min(dp[i-1][j] + c, dp[i][j]);
 			}
-            if (j > 0){//列方向の隣が#ならひっくり返しはない
+            if (j > 0){
                 c = grid[i][j];
-				if(grid[i][j-1] == 1) c = 0;
+				if(grid[i][j-1] == 1) c = 0;//列方向の隣が#ならひっくり返しはない
 				dp[i][j] = min(dp[i][j-1] + c, dp[i][j]);
 			}
         }
