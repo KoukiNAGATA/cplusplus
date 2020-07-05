@@ -17,11 +17,31 @@ int main() {
     //cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
-    ll a, b, ans;
-    cin >> a >> b;
-    ans = 0;
-    vll dp(a+10, inf);//初期化忘れない
+    ll ac, wa, tle, re, n;
+    ac = 0;
+    wa = 0;
+    tle = 0;
+    re = 0;
+    string tmp;
+    cin >> n;
+    REP(i, n){
+        cin >> tmp;
+        if(tmp == "AC"){
+            ac ++;
+        }else if(tmp == "WA"){
+            wa ++;
+        }
+        else if(tmp == "TLE"){
+            tle ++;
+        }
+        else if(tmp == "RE"){
+            re ++;
+        }
+    }
 
-    cout << ans <<"\n";
+    cout << "AC x "  << ac <<"\n";
+    cout << "WA x "  << wa <<"\n";
+    cout << "TLE x "  << tle <<"\n";
+    cout << "RE x "  << re <<"\n";
 	return 0;
 }

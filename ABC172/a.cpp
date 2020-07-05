@@ -17,11 +17,9 @@ int main() {
     //cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
-    ll a, b, ans;
-    cin >> a >> b;
-    ans = 0;
-    vll dp(a+10, inf);//初期化忘れない
+    ll a;
+    cin >> a ;
 
-    cout << ans <<"\n";
+    cout << a + a*a + a*a*a <<"\n";
 	return 0;
 }

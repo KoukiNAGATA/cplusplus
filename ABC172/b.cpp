@@ -17,10 +17,14 @@ int main() {
     //cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
-    ll a, b, ans;
+    string a, b;
+    ll ans;
     cin >> a >> b;
     ans = 0;
-    vll dp(a+10, inf);//初期化忘れない
+    ll l = a.length();
+    REP(i, l){
+        if(a[i] != b[i]) ans ++;
+    }
 
     cout << ans <<"\n";
 	return 0;

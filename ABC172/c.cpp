@@ -17,10 +17,38 @@ int main() {
     //cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
-    ll a, b, ans;
-    cin >> a >> b;
+    ll n, m, k, ans;
+    cin >> n >> m >> k;
+    ll curr_k = k;
     ans = 0;
-    vll dp(a+10, inf);//初期化忘れない
+    vll a(n, 0);
+    vll b(m, 0);
+    ll tmp = 0;
+
+    FOR(i, 1, n){
+        cin >> tmp;
+        if(i > 1){
+            a[i] = a[i-1] + tmp;
+        }else{
+            a[i] = tmp;
+        }
+    }
+    FOR(i, 1, m){
+        cin >> tmp;
+        if(i > 1){
+            b[i] = b[i-1] + tmp;
+        }else{
+            b[i] = tmp;
+        }
+    }
+
+    FOR(i, 1, n){
+        FOR(j, 1, m){
+            if(a[i] + b[j] <= k){
+                ans = max(ans, i + j);
+            }
+        }
+    }
 
     cout << ans <<"\n";
 	return 0;

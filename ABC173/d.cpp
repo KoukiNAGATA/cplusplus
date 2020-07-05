@@ -17,11 +17,25 @@ int main() {
     //cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
-    ll a, b, ans;
-    cin >> a >> b;
-    ans = 0;
-    vll dp(a+10, inf);//初期化忘れない
+    ll n, a_min, sum;
+    cin >> n;
+    sum = 0;
+    vll a(n, 0);//初期化忘れない
+    REP(i, n) cin >> a[i];
+    sort(a.begin(), a.end());
+    if(a.size() % 2 == 0){
+        FORR(i, n-1, n/2){
+            sum += a[i] * 2;
+        }
+        sum -= a[n-1];
+    }else{
+        FORR(i, n-1, (n-1)/2){
+            sum += a[i] * 2;
+        }
+        sum -= a[n-1];
+        sum -= a[(n-1)/2];
+    }
 
-    cout << ans <<"\n";
+    cout << sum <<"\n";
 	return 0;
 }
