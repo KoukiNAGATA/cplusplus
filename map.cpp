@@ -29,7 +29,7 @@ int main() {
         memo[tmp] ++;
     }
     
-    for (const auto& x : memo) {//登場する最大回数を抑える。
+    for (const auto & x : memo) {//登場する最大回数を抑える。
         ll v = x.second;
         if (v > maxv) maxv = v;
     }

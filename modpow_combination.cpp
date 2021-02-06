@@ -22,9 +22,9 @@ ll invfact[2*MAX+10];//階乗の逆元
 
 ll modpow(ll A, ll N){//二分累乗法により、Nを2の累乗の和に分解してO(logN)で求める
     ll res = 1;
-    while(N>0) {
-        if(N&1) res = res*A%mod;
-        A = A*A%mod;
+    while(N > 0) {
+        if(N & 1) res = res * A % mod;
+        A = A * A % mod;
         N >>= 1;
     }
     return res;

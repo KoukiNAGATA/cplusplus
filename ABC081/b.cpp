@@ -1,12 +1,4 @@
-#include<iostream>
-#include<vector>
-#include<string>
-#include<map>
-#include<utility>
-#include<algorithm>
-#include<queue>
-#include<cmath>
-#include<iomanip>
+#include <bits/stdc++.h>
 #define REP(i, n) for(ll i = 0; i < n; i++)
 #define REPR(i, n) for(ll i = n - 1; i >= 0; i--)
 #define FOR(i, m, n) for(ll i = m; i <= n; i++)
@@ -19,16 +11,29 @@ using ll = long long;
 using vll = vector<ll>;
 using vvll = vector<vector<ll>>;
 using P = pair<ll, ll>;
+using graph = vector<vector<int>>;
 
 int main() {
     //cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
-    ll a, b, ans;
-    cin >> a >> b;
+    ll n, ans;
     ans = 0;
-    vll dp(a+10, inf);//初期化忘れない
+    cin >> n;
+    vll a(n, 0);
+    REP(i, n) cin >> a[i];
+    while(true){
+        REP(i, n){
+            if(a[i] % 2 == 0){
+                a[i] /= 2;
+            }else{
+                cout << ans <<"\n";
+                return 0;
+            }
+        }
+        ans ++;
+    }
 
-    cout << b <<"\n";
+    cout << ans <<"\n";
 	return 0;
 }
