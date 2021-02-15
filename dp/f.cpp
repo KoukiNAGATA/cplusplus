@@ -1,9 +1,4 @@
-#include<iostream>
-#include<vector>
-#include<string>
-#include<map>
-#include<utility>
-#include<algorithm>
+#include <bits/stdc++.h>
 #define REP(i, n) for(int i = 0; i < n; i++)
 #define REPR(i, n) for(int i = n - 1; i >= 0; i--)
 #define FOR(i, m, n) for(int i = m; i <= n; i++)
@@ -16,6 +11,7 @@ using ll = long long;
 using vll = vector<ll>;
 using vvll = vector<vector<ll>>;
 using P = pair<ll, ll>;
+using graph = vector<vector<int>>;
 
 int main()
 {
