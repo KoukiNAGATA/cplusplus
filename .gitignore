@@ -2,3 +2,8 @@
 .vscode/c_cpp_properties.json
 *.out
 *.pdf
+/cookpad/
+/line/
+/rakuten/
+/recruit/
+/yahoo/
