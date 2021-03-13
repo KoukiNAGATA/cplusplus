@@ -12,7 +12,7 @@ using ll = long long;
 using vll = vector<ll>;
 using vvll = vector<vector<ll>>;
 using P = pair<ll, ll>;
-using graph = vector<vector<int>>;
+using Graph = vector<vector<int>>;
 
 string f(string ans){
     sort(ans.begin(), ans.end(), greater<int>());

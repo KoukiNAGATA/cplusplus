@@ -10,7 +10,7 @@ using ll = long long;
 using vll = vector<ll>;
 using vvll = vector<vector<ll>>;
 using P = pair<ll, ll>;
-using graph = vector<vector<int>>;
+using Graph = vector<vector<int>>;
 using Grid = vector<vector<bool>>;
 template<class T> void chmax(T& a, T b){
     if(a < b){

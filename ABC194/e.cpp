@@ -11,7 +11,7 @@ using ll = long long;
 using vll = vector<ll>;
 using vvll = vector<vector<ll>>;
 using P = pair<ll, ll>;
-using graph = vector<vector<int>>;
+using Graph = vector<vector<int>>;
  
 const int N = 1.5e6 + 10;
  

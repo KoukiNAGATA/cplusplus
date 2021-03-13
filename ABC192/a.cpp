@@ -11,7 +11,7 @@ using ll = long long;
 using vll = vector<ll>;
 using vvll = vector<vector<ll>>;
 using P = pair<ll, ll>;
-using graph = vector<vector<int>>;
+using Graph = vector<vector<int>>;
 
 // 区間を終端時刻で大小比較する関数
 bool cmp(const P &a, const P &b){

@@ -11,11 +11,11 @@ using ll = long long;
 using vll = vector<ll>;
 using vvll = vector<vector<ll>>;
 using P = pair<ll, ll>;
-using graph = vector<vector<int>>;
+using Graph = vector<vector<int>>;
 
 //DFS...深さ優先探索
 vector<bool> seen;
-void dfs(const graph &g, int v) {
+void dfs(const Graph &g, int v) {
     seen[v] = true; // v を訪問済にする
 
     // v から行ける各頂点 next_v について
@@ -31,7 +31,7 @@ int main() {
     cin >> n >> m;
 
     // グラフ入力受取 (ここでは無向グラフを想定)
-    graph g(n);
+    Graph g(n);
     for (int i = 0; i < m; ++i) {
         int a, b;
         cin >> a >> b;

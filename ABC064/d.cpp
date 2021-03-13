@@ -18,25 +18,28 @@ int main() {
     //cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
-    ll n, ans, sum;
+    int n; 
     cin >> n;
-    vll a(n, 0);
-    ans = 0;
-    sum = 0;
-    REP(i, n){
-        cin >> a[i];
-        sum += a[i];
-        sum %= mod;
-    }
+    string s; 
+    cin >> s;
 
-    REP(i, n){
-        sum -= a[i];
-        if (sum < 0) sum += mod;
- 
-        ans += a[i] * sum;
-        ans %= mod;
+    int cnt_left = 0;
+    int pointer = 0;
+    // 左から足りない"(", 右から足りない")"を埋めることで正しい括弧列となる
+    REP(i, n) {
+        if (s[i] == '(') {
+            ++pointer;
+        } else { // s[i] == ')'
+            if (pointer == 0) ++cnt_left;
+            else --pointer;
+        }
     }
+    int cnt_right = pointer;
 
-    cout << ans <<"\n";
-	return 0;
+    string res = "";
+    REP(i, cnt_left) res += '(';
+    res += s;
+    REP(i, cnt_right) res += ')';
+    cout << res << endl;
+    return 0;
 }

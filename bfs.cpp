@@ -11,7 +11,7 @@ using ll = long long;
 using vll = vector<ll>;
 using vvll = vector<vector<ll>>;
 using P = pair<ll, ll>;
-using graph = vector<vector<int>>;
+using Graph = vector<vector<int>>;
 
 //BFS...幅優先探索
 int main() {
@@ -20,7 +20,7 @@ int main() {
     cin >> n >> m;
 
     // グラフ入力受取 (ここでは無向グラフを想定)
-    graph g(n+1);
+    Graph g(n+1);
     REP(i, m){
         cin >> a >> b;
         g[a].push_back(b);//aから辿れる頂点の配列

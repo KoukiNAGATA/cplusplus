@@ -11,7 +11,7 @@ using ll = long long;
 using vll = vector<ll>;
 using vvll = vector<vector<ll>>;
 using P = pair<ll, ll>;
-using graph = vector<vector<int>>;
+using Graph = vector<vector<int>>;
 using Grid = vector<vector<bool>>;
 
 bool isRight(int bit, int h, int w, int k, Grid grid){
