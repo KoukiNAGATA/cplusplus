@@ -14,7 +14,7 @@ using P = pair<ll, ll>;
 using Graph = vector<vector<int>>;
 
 int main(){
-    //cin高速化
+    // cin高速化
     cin.tie(0);
     int a,b,w;
     cin >> a >> b >> w;

@@ -38,7 +38,7 @@ bool isRight(int bit, int h, int w, int k, Grid grid){
 }
 
 int main() {
-    //cin高速化
+    // cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
     int h, w, k;

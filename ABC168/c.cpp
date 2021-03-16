@@ -14,7 +14,7 @@ using P = pair<ll, ll>;
 static const double pi = 3.141592653589793;
 
 int main() {
-    //cin高速化
+    // cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
     double a, b, h, m, ans;

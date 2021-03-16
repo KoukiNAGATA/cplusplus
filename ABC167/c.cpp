@@ -51,7 +51,7 @@ void isSkill(vll tmp, vvll a) {//今回の組の計算
 }
 
 int main() {
-    //cin高速化
+    // cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
     cin >> n >> m >> x;

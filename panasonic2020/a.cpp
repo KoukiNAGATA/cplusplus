@@ -19,7 +19,7 @@ using P = pair<ll, ll>;
 using p = pair<int, int>;
 
 int main() {
-    //cin高速化
+    // cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
     ll num[] = {1, 1, 1, 2, 1, 2, 1, 5, 2, 2, 1, 5, 1, 2, 1, 14, 1, 5, 1, 5, 2, 2, 1, 15, 2, 2, 5, 4, 1, 4, 1, 51};

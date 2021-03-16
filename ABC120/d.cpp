@@ -1,3 +1,4 @@
+// UnionFindの実用
 #include <bits/stdc++.h>
 #define REP(i, n) for(int i = 0; i < n; i++)
 #define REPR(i, n) for(int i = n - 1; i >= 0; i--)
@@ -42,3 +43,32 @@ struct UnionFind {
     //集合のサイズを返す
     int size(int x) { return siz[root(x)];}
 };
+
+int main() {
+    // cin高速化
+    cin.tie(0);
+    ios::sync_with_stdio(false);
+    ll n, m;
+    cin >> n >> m;
+    vector<ll> ans(m+10, 0);
+    vector<pair<int, int>> g(m);
+    REP(i, m){
+        cin >> g[i].first >> g[i].second;
+        // 0 origin
+        --g[i].first, --g[i].second;
+    }
+    
+    UnionFind uf(n); // 初期化
+    ll res = n*(n-1)/2; // 全崩落
+    REPR(i, m){ // 後ろの辺から連結していく
+        ans[i+1] = res;
+        int a = g[i].first, b = g[i].second;
+        if(!uf.issame(a, b)){
+            res -= uf.size(a) * uf.size(b);
+            uf.unite(a, b);
+        }
+    }
+    FOR(i, 1, m){
+        cout << ans[i] << endl;
+    }
+}

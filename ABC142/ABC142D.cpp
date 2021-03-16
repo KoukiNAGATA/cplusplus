@@ -16,7 +16,7 @@ ll LCM(ll x, ll y) {//最小公倍数
 }
 
 int main() {
-    //cin高速化
+    // cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
 

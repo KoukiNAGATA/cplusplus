@@ -35,7 +35,7 @@ void isSkill(ll bit, vvll a){//この組の理解度を算出
 }
 
 int main() {
-    //cin高速化
+    // cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
     cin >> n >> m >> x;

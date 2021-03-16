@@ -25,7 +25,7 @@ ll GCD(ll x, ll y) {//最大公約数：x%y!=0ならばGCD(y, x%y)、0ならばy
 }
 
 int main() {
-    //cin高速化
+    // cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
     ll n, k, g, m;

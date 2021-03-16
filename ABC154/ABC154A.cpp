@@ -7,7 +7,7 @@ using namespace std;
 const int inf = 1000000007;
 
 int main() {
-    //cin高速化
+    // cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
     std::string s, t, u;

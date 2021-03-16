@@ -22,7 +22,7 @@ bool lessPair(const ipair& l, const ipair& r){return l.second < r.second;}
 bool greaterPair(const ipair& l, const ipair& r){return l.second > r.second;}
 
 int main(){
-    //cin高速化
+    // cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
     int n, m, q;

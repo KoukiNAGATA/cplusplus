@@ -15,7 +15,7 @@ using Graph = vector<vector<int>>;
 
 //mapの使い方。数え上げ。O(n)
 int main() {
-    //cin高速化
+    // cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
     map<string, ll> memo;//単語がキー

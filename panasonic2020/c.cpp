@@ -21,7 +21,7 @@ using P = pair<ll, ll>;
 using p = pair<int, int>;
 
 int main() {
-    //cin高速化
+    // cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
     long double a, b, c;

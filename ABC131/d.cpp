@@ -19,7 +19,7 @@ bool cmp(const P &a, const P &b){
 }
 
 int main() {
-    //cin高速化
+    // cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
     ll n;

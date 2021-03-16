@@ -21,7 +21,7 @@ using vvll = vector<vector<ll>>;
 using P = pair<ll, ll>;
 
 int main() {
-    //cin高速化
+    // cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
     ll a, b, q, s_a, s_b, t_a, t_b, ans, x;

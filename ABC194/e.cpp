@@ -18,7 +18,7 @@ const int N = 1.5e6 + 10;
 int que[N], a[N], bucket[N];
  
 int main(){
-    //cin高速化
+    // cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
 	int n, m;
