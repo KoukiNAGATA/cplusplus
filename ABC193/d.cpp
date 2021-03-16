@@ -13,32 +13,30 @@ using vvll = vector<vector<ll>>;
 using P = pair<ll, ll>;
 using Graph = vector<vector<int>>;
 
-// xをn進数とみなしたときm以下であればtrue
-bool check(ll n, string x, ll m){
-    ll res = 0;
-    for( char c : x ){
-        if(res > m / n) return false;
-        res = res * n + (c - '0');
-    }
-    return res <= m;
+ll score(string s){
+    vector<ll> cnt(10);
+    // cnt[0] = 0, cnt[1] = 1, ..., cnt[9] = 9
+    iota(cnt.begin(), cnt.end(), 0);
+    // 見つかった枚数分だけ*10する
+    for(char c : s) cnt[c - '0'] *= 10;
+    // 配列の合計値を求める
+    return accumulate(cnt.begin(), cnt.end(), 0);
 }
- 
 int main(){
-    // cin高速化
-    cin.tie(0);
-    ios::sync_with_stdio(false);
     ll k;
-    cin >> k;
-    char tmp;
-    vll a, b;
-    FOR(i, 2){
-        FOR(j, 5){
-            cin >> tmp;
-            if(j < 4){
-                if(i == 0) a.push_back(tmp);
-                if(j == 0) b.push_back(tmp);
-            }
+    string s, t;
+    cin >> k >> s >> t;
+    vector<ll> cnt(10, k);
+    for(char c : s + t) cnt[c - '0']--;
+    ll win = 0;
+    // x, yの組について全探索
+    FOR(x, 1, 9) {
+        FOR(y, 1, 9) {
+            s.back() = '0' + x;
+            t.back() = '0' + y;
+            if(score(s) <= score(t)) continue;
+            win += cnt[x] * (cnt[y] - (x == y));
         }
     }
-    return 0;
+    cout << fixed << setprecision(10) << double(win) / ((9 * k - 8)*(9 * k - 9)) << endl;
 }
