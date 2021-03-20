@@ -17,39 +17,36 @@ int main() {
     // cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
-    ll n, m, k, ans;
+    ll n, m, k;
+    ll ans = 0;
     cin >> n >> m >> k;
-    ll curr_k = k;
-    ans = 0;
-    vll a(n, 0);
-    vll b(m, 0);
-    ll tmp = 0;
-
-    FOR(i, 1, n){
+    vll A, B;
+    ll tmp;
+    REP(i, n){
         cin >> tmp;
-        if(i > 1){
-            a[i] = a[i-1] + tmp;
-        }else{
-            a[i] = tmp;
-        }
+        A.push_back(tmp);
     }
-    FOR(i, 1, m){
+    REP(i, m){
         cin >> tmp;
-        if(i > 1){
-            b[i] = b[i-1] + tmp;
-        }else{
-            b[i] = tmp;
-        }
+        B.push_back(tmp);
     }
-
-    FOR(i, 1, n){
-        FOR(j, 1, m){
-            if(a[i] + b[j] <= k){
-                ans = max(ans, i + j);
-            }
-        }
+    // i冊目まで読んだ場合の合計時間の配列
+    vll a, b;
+    a.push_back(0);
+    b.push_back(0);
+    REP(i, n){
+        a.push_back(a[i] + A[i]);
     }
-
+    REP(i, m){
+        b.push_back(b[i] + B[i]);
+    }
+    // aをi冊読んだ場合bを何冊読めるか. O(N+M)
+    ll j = m;
+    REP(i, n + 1){
+        if (a[i] > k) break;
+        while (b[j] > k - a[i]) --j;
+        ans = max(ans, i + j);
+    }
     cout << ans <<"\n";
 	return 0;
 }

@@ -13,32 +13,17 @@ using vvll = vector<vector<ll>>;
 using P = pair<ll, ll>;
 using Graph = vector<vector<int>>;
 
-ll enum_divisors(ll N) {
-    ll res = 0;
-    for (ll i = 1; i * i <= N; ++i) {
-        if (N % i == 0) {
-            res ++;
-            // 重複しないならば i の相方である N/i も push
-            if (N/i != i) res ++;
-        }
-    }
-    return res;
-}
-
 int main() {
     // cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
-    ll k, ans;
-    cin >> k;
-    ans = 1;
-    if(k == 1){
-        cout << 1 <<"\n";
-        return 0;
-    }
-    FOR(i, 2, k){
-        ll tmp = enum_divisors(i);
-        ans += tmp * i;
+    ll n, ans;
+    cin >> n;
+    ans = 0;
+    FOR(i, 1, n){ // iはnまでのうちどれの約数か
+        for(ll j = i; j <= n; j += i){
+            ans += j;
+        }
     }
 
     cout << ans <<"\n";
