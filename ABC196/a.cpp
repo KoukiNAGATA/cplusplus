@@ -18,21 +18,8 @@ int main()
     // cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
-    int a, b, w;
-    cin >> a >> b >> w;
-    int m = 1e9, M = 0;
-    // 1000*1000個まで全探索
-    for (int n = 1; n <= 1000000; n++)
-    {
-        if (a * n <= 1000 * w && 1000 * w <= b * n) // 範囲内ならちょうどwキログラムにできる
-        {
-            m = min(m, n);
-            M = max(M, n);
-        }
-    }
-    if (M == 0)
-        cout << "UNSATISFIABLE";
-    else
-        cout << m << ' ' << M;
+    int a, b, c, d;
+    cin >> a >> b >> c >> d;
+    cout << b - c << "\n";
     return 0;
 }
