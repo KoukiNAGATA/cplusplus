@@ -58,5 +58,5 @@ int main()
 
     // 結果出力 (各頂点の頂点1からの距離を見る)
     FOR(v, 1, n)
-        cout << v << ": " << dist[v] << endl;
+    cout << v << ": " << dist[v] << "\n";
 }

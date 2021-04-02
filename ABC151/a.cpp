@@ -21,5 +21,5 @@ int main()
     char c;
     cin >> c;
     c++;
-    cout << c << endl;
+    cout << c << "\n";
 }

@@ -77,5 +77,5 @@ int main()
             ans = max(ans, bfs(v, x, y));
         }
     }
-    cout << ans << endl;
+    cout << ans << "\n";
 }

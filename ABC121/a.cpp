@@ -1,16 +1,16 @@
-#include<iostream>
-#include<vector>
-#include<cstdio>
-#include<string>
-#include<algorithm>
+#include <iostream>
+#include <vector>
+#include <cstdio>
+#include <string>
+#include <algorithm>
 using namespace std;
 
-
-int main() {
-	int H, W ,h, w;
+int main()
+{
+    int H, W, h, w;
     cin >> H >> W >> h >> w;
     //ちゃんと初期化する
-    int tmp = h*W + w*H - h*w;
-    cout << H*W - tmp << endl;
+    int tmp = h * W + w * H - h * w;
+    cout << H * W - tmp << "\n";
     return 0;
 }

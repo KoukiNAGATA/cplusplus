@@ -33,5 +33,5 @@ int main()
     if (sq * sq == n)
         ans--;
     // *2(どっちがxy=2N(xyは偶奇不一致)の偶数部分になるか)
-    cout << ans * 2 << endl;
+    cout << ans * 2 << "\n";
 }

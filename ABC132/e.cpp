@@ -70,5 +70,5 @@ int main()
     }
     cin >> s >> t;
     --s, --t; // 0 origin
-    cout << solve() << endl;
+    cout << solve() << "\n";
 }

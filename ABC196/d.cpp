@@ -79,5 +79,5 @@ int main()
         used[i].resize(w);
     }
     dfs(0, 0, a, b);
-    cout << ans << endl;
+    cout << ans << "\n";
 }

@@ -74,6 +74,6 @@ int main()
     // 全ノードを一通り更新しながら答えを求める;
     REP(i, n)
     chmax(ans, rec(i));
-    cout << ans << endl;
+    cout << ans << "\n";
     return 0;
 }

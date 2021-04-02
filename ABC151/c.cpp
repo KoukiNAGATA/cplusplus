@@ -48,7 +48,7 @@ int main()
         }
     }
 
-    cout << cnt_ac << " " << cnt_wa << endl;
+    cout << cnt_ac << " " << cnt_wa << "\n";
 
     return 0;
 }

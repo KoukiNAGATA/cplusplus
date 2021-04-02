@@ -41,6 +41,6 @@ int main()
     string s;
     int ans = 0;
     cin >> s;
-    cout << solve(s) << endl;
+    cout << solve(s) << "\n";
     return 0;
 }

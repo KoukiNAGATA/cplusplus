@@ -81,6 +81,6 @@ int main()
     }
     FOR(i, 1, m)
     {
-        cout << ans[i] << endl;
+        cout << ans[i] << "\n";
     }
 }

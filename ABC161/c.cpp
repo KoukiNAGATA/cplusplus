@@ -1,15 +1,15 @@
-#include<iostream>
-#include<vector>
-#include<string>
-#include<map>
-#include<utility>
-#include<algorithm>
-#include<iomanip>
-#define REP(i, n) for(int i = 0; i < n; i++)
-#define REPR(i, n) for(int i = n - 1; i >= 0; i--)
-#define FOR(i, m, n) for(int i = m; i <= n; i++)
-#define FORR(i, m, n) for(int i = m; i >= n; i--)
-#define SORT(v, n) sort(v, v+n)
+#include <iostream>
+#include <vector>
+#include <string>
+#include <map>
+#include <utility>
+#include <algorithm>
+#include <iomanip>
+#define REP(i, n) for (int i = 0; i < n; i++)
+#define REPR(i, n) for (int i = n - 1; i >= 0; i--)
+#define FOR(i, m, n) for (int i = m; i <= n; i++)
+#define FORR(i, m, n) for (int i = m; i >= n; i--)
+#define SORT(v, n) sort(v, v + n)
 #define MAX 100000
 #define inf 1000000007
 using namespace std;
@@ -19,14 +19,15 @@ using vvll = vector<vector<ll>>;
 using P = pair<ll, ll>;
 using p = pair<int, int>;
 
-int main() {
+int main()
+{
     // cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
-    ll n , k;
+    ll n, k;
     cin >> n >> k;
     n = n % k;
-    n = min(n, abs(n-k));
-    cout << n << endl;
-	return 0;
+    n = min(n, abs(n - k));
+    cout << n << "\n";
+    return 0;
 }

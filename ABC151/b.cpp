@@ -29,11 +29,11 @@ int main()
     }
 
     if (sum >= n * m) //既に超えている
-        cout << 0 << endl;
+        cout << 0 << "\n";
     else if (sum + k >= n * m) //超えることができる
-        cout << n * m - sum << endl;
+        cout << n * m - sum << "\n";
     else
-        cout << -1 << endl;
+        cout << -1 << "\n";
 
     return 0;
 }

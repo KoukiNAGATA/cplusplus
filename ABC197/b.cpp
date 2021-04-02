@@ -74,5 +74,5 @@ int main()
         else
             break;
     }
-    cout << ans << endl;
+    cout << ans << "\n";
 }

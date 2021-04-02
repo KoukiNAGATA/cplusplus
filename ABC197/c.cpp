@@ -61,6 +61,6 @@ int main()
     {
         ans = min(ans, orxor(bit));
     }
-    cout << ans << endl;
+    cout << ans << "\n";
     return 0;
 }

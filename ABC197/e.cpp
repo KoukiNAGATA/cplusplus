@@ -52,7 +52,7 @@ int main()
         rnew = r;
     }
     // 原点へ戻る
-    cout << min(lscore + abs(lnew), rscore + abs(rnew)) << endl;
+    cout << min(lscore + abs(lnew), rscore + abs(rnew)) << "\n";
 
     return 0;
 }

@@ -65,7 +65,8 @@ int main()
         }
     }
     if (!negative)
-        cout << -dist[n - 1] << endl;
+        cout << -dist[n - 1] << "\n";
     else
-        cout << "inf" << endl;
+        cout << "inf"
+             << "\n";
 }
