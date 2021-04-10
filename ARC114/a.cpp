@@ -27,6 +27,7 @@ int main()
     ios::sync_with_stdio(false);
     int n;
     cin >> n;
+    // 50までの素数を列挙
     vector<int> p = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47};
     vll x(n);
     REP(i, n)
