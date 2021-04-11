@@ -8,63 +8,34 @@ using namespace std;
 using ll = long long;
 using vll = vector<ll>;
 using vvll = vector<vector<ll>>;
-struct Edge
-{
-    int to;
-    int cost;
-};
-using Graph = vector<Edge>;
-using P = pair<long, int>;
-const ll INF = 1LL << 60;
+using P = pair<ll, ll>;
+using Graph = vector<vector<int>>;
+using Edge = pair<int, ll>;
 const int MAX = 100000;
+const ll INF = 1LL << 60;
 
-/* dijkstra(G,s,dis,prev)
-    入力：グラフ G, 開始点 s, 距離を格納する dis, 最短経路の前の点を記録するprev
-    計算量：O(|E|log|V|)
-    副作用：dis, prevが書き換えられる
-*/
-void dijkstra(const Graph &G, int s, vector<int> &dis, vector<int> &prev)
-{
-    int N = G.size();
-    dis.resize(N, MAX);
-    prev.resize(N, -1); // 初期化
-    priority_queue<P, vector<P>, greater<P>> pq;
-    dis[s] = 0;
-    pq.emplace(dis[s], s);
-    while (!pq.empty())
-    {
-        P p = pq.top();
-        pq.pop();
-        int v = p.second;
-        if (dis[v] < p.first)
-        {
-            continue;
-        }
-        for (auto &e : G[v])
-        {
-            if (dis[e.to] > dis[v] + e.cost)
-            {
-                dis[e.to] = dis[v] + e.cost;
-                prev[e.to] = v; // 頂点 v を通って e.to にたどり着いた
-                pq.emplace(dis[e.to], e.to);
-            }
-        }
-    }
-}
+// 頂点数, 頂点の色, 遷移における色の数
+int n, c[100010], cnt[100010];
+// グラフ
+vector<int> e[100010];
+// いい頂点
+bool good[100010];
 
-/* get_path(prev, t)
-    入力：dijkstra で得た prev, ゴール t
-    出力： t への最短路のパス
-*/
-vector<int> get_path(const vector<int> &prev, int t)
+// DFS, cnt[color]...色colorがこれまでの遷移に何回あったか, cu...current, pa...past(初期値=-1)
+void dfs(int cu, int pa = -1)
 {
-    vector<int> path;
-    for (int cur = t; cur != -1; cur = prev[cur])
-    {
-        path.push_back(cur);
-    }
-    reverse(path.begin(), path.end()); // 逆順なのでひっくり返す
-    return path;
+    // いい点
+    if (cnt[c[cu]] == 0)
+        good[cu] = true;
+    // 現在の色を通過
+    cnt[c[cu]]++;
+
+    for (auto &to : e[cu])
+        if (to != pa) // 同じ点に戻らない(木構造なので端点で止まる)
+            dfs(to, cu);
+    // 頂点から離れる(現在見ている頂点から始点（頂点1）までの情報に限定)
+    cnt[c[cu]]--;
+    return;
 }
 
 int main()
@@ -73,41 +44,24 @@ int main()
     cin.tie(0);
     ios::sync_with_stdio(false);
     // 頂点数と辺数
-    int n;
     cin >> n;
-    vector<int> c(n, 0);
+    // 色の入力
     FOR(i, 1, n)
     cin >> c[i];
-    // グラフ入力受取 (ここでは無向グラフを想定)
-    Graph g(n);
-    for (int i = 0; i < m; ++i)
+    // グラフの入力(木なので辺の本数はn-1本)
+    REP(i, n - 1)
     {
         int a, b;
         cin >> a >> b;
-        a++;
-        b++;
-        g[a].push_back(Edge(b, 1));
-        g[b].push_back(Edge(a, 1));
+        e[a].push_back(b);
+        e[b].push_back(a);
     }
 
-    vector<int> dis;
-    vector<int> prev;
-    // 頂点 1 をスタートとした探索
-    dijkstra(g, 1, dis, prev);
+    // 頂点1からDFS
+    dfs(1);
     // check
     FOR(i, 1, n)
-    {
-        bool flag = false;
-        for (auto p : get_path(prev, i))
-        {
-            // 同じ色か
-            if (p == i)
-                continue;
-            if (c[p] == c[i])
-                flag = true;
-        }
-        if (!flag)
-            cout << i << "\n";
-    }
+    if (good[i])
+        cout << i << "\n";
     return 0;
 }
