@@ -31,6 +31,7 @@ int main()
     REP(i, s3.size())
     alphabet[s3[i] - 'a']++;
 
+    // 存在したアルファベットについて、0から番号を振っていく
     int n = 0;
     REP(i, 26)
     {
@@ -54,7 +55,7 @@ int main()
     v[i] = i;
     do
     {
-        // 先頭が0のときはスキップ
+        // 先頭の文字が0のときはスキップ
         if (v[alphabet[s1[0] - 'a']] == 0)
             continue;
         if (v[alphabet[s2[0] - 'a']] == 0)
