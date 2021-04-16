@@ -25,7 +25,7 @@ int main()
     // cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
-    long double a, b, c;
+    ll a, b, c;
     cin >> a >> b >> c;
     //二乗して整数で考えるのが丸い
     if (c - a - b > 0 && (c - a - b) * (c - a - b) - 4 * a * b > 0)
