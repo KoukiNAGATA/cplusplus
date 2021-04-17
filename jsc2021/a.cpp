@@ -21,15 +21,6 @@ int main()
     ios::sync_with_stdio(false);
     int x, y, z;
     cin >> x >> y >> z;
-    int ans = 0;
-    FORR(i, 1000 * 1000, 0)
-    {
-        if (z * y > x * i)
-        {
-            ans = i;
-            break;
-        }
-    }
-    cout << ans << "\n";
+    cout << (z * y - 1) / x << "\n";
     return 0;
 }

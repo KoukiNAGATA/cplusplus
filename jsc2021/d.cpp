@@ -36,14 +36,12 @@ int main()
     ll n, p, ans;
     cin >> n >> p;
     ans = p - 1;
-    if (p == 2 && n == 1)
-    {
-        cout << ans << "\n";
-        return 0;
-    }
     if (p == 2)
     {
-        cout << 0 << "\n";
+        if (n == 1)
+            cout << ans << "\n";
+        else
+            cout << 0 << "\n";
         return 0;
     }
     ans = ans * modpow(p - 2, n - 1) % mod;
