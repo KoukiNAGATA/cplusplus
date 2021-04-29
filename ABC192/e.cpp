@@ -1,4 +1,4 @@
-// dijkstraの基本
+// 始点から終点へのdijkstra
 #include <bits/stdc++.h>
 #define REP(i, n) for (int i = 0; i < n; i++)
 #define REPR(i, n) for (int i = n - 1; i >= 0; i--)
@@ -11,17 +11,32 @@ using vll = vector<ll>;
 using vvll = vector<vector<ll>>;
 using P = pair<ll, ll>;
 const ll INF = 1LL << 60;
+const int MAX = 100000;
+template <class T>
+bool chmin(T &a, const T &b)
+{
+    if (b < a)
+    {
+        a = b;
+        return 1;
+    }
+    return 0;
+}
+
+// 昇順priority_que
+template <typename T>
+using min_priority_queue = priority_queue<T, vector<T>, greater<T>>;
 
 struct edge
 {
     // 行き先
-    int v;
+    int to;
     // 時間
-    int t;
+    ll t;
     // 出発時間
-    int k;
+    ll k;
     edge() {}
-    edge(int v, int k, int t) : v(v), t(t), k(k){};
+    edge(int to, ll t, ll k) : to(to), t(t), k(k){};
 };
 
 using Graph = vector<vector<edge>>;
@@ -31,34 +46,32 @@ vll dijkstra(int n, Graph &g, int x, int y)
     // 初期化
     vll d(n, INF);
     d[x] = 0;
-    vector<int> vis(n, 0);
     // 優先度付きキュー。ヒープ構造のdijkstra。(始点, 距離)
-    priority_queue<pair<int, ll>> que;
+    min_priority_queue<pair<int, ll>> que;
     que.push(make_pair(x, 0));
     while (!que.empty())
     {
         auto p = que.top();
         que.pop();
         int u = p.first;
-        ll cst = -p.second;
-        // 探索済み
+        ll cst = p.second;
+        // 枝刈り
         if (u == y)
             return d;
-        if (vis[u])
+        if (cst > d[u])
             continue;
-        vis[u] = 1;
-        for (edge e : g[u])
+        for (auto &e : g[u])
         {
-            // コスト = 出発時間(いちばん近いkの倍数) + 時間
+            // コスト = 出発時間(いちばん近い次のkの倍数) + 時間
             ll cst2 = (cst + e.k - 1) / e.k * e.k + e.t;
             // 重みの更新
-            if (d[e.v] > cst2)
-            {
-                d[e.v] = cst2;
-                que.push(make_pair(e.v, -d[e.v]));
-            }
+            if (chmin(d[e.to], cst2))
+                que.push(make_pair(e.to, d[e.to]));
         }
     }
+    // 未探索
+    if (d[y] == INF)
+        d[y] = -1;
     return d;
 }
 
@@ -72,13 +85,10 @@ int main()
     // 0オリジン
     --x;
     --y;
-    vector<int> a(n, 0);
     Graph g(n);
-    REP(i, n)
-    cin >> a[i];
     REP(i, m)
     {
-        int a, b, t, k;
+        ll a, b, t, k;
         cin >> a >> b >> t >> k;
         // 0オリジン
         --a;
@@ -87,7 +97,7 @@ int main()
         g[a].emplace_back(b, t, k);
         g[b].emplace_back(a, t, k);
     }
-    // 視点からのdijkstra
+    // 始点から終点へのdijkstra
     auto d = dijkstra(n, g, x, y);
     cout << d[y] << "\n";
     return 0;
