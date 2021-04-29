@@ -56,8 +56,6 @@ vll dijkstra(int n, Graph &g, int x, int y)
         int u = p.first;
         ll cst = p.second;
         // 枝刈り
-        if (u == y)
-            return d;
         if (cst > d[u])
             continue;
         for (auto &e : g[u])
