@@ -20,9 +20,16 @@ int main()
     // cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
-    int n, m;
-    cin >> n >> m;
-    ll ans = 0;
-    cout << ans << "\n";
+    ll n;
+    cin >> n;
+    vll a(n, 0);
+    ll b = 0;
+    REP(i, n)
+    {
+        cin >> a[i];
+        b ^= a[i];
+    }
+    REP(i, n)
+    cout << (b ^ a[i]) << " ";
     return 0;
 }
