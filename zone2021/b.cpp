@@ -20,9 +20,15 @@ int main()
     // cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
-    int n, m;
-    cin >> n >> m;
-    ll ans = 0;
-    cout << ans << "\n";
+    int n, D, H, d, h;
+    cin >> n >> D >> H;
+    double m;
+    REP(i, n)
+    {
+        cin >> d >> h;
+        double tmp = h - (double)(H - h) / (double)(D - d) * d;
+        m = max(m, tmp);
+    }
+    cout << fixed << setprecision(10) << m << "\n";
     return 0;
 }

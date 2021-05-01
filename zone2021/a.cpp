@@ -20,9 +20,14 @@ int main()
     // cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
-    int n, m;
-    cin >> n >> m;
+    string s;
+    cin >> s;
     ll ans = 0;
+    REP(i, 9)
+    {
+        if (s.substr(i, 4) == "ZONe")
+            ans++;
+    }
     cout << ans << "\n";
     return 0;
 }
