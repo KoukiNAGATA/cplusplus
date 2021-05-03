@@ -1,3 +1,4 @@
+// クラスカル法。最小全域木
 #include <bits/stdc++.h>
 #define REP(i, n) for (int i = 0; i < n; i++)
 #define REPR(i, n) for (int i = n - 1; i >= 0; i--)
@@ -10,10 +11,12 @@ using vll = vector<ll>;
 using vvll = vector<vector<ll>>;
 using P = pair<ll, ll>;
 using Graph = vector<vector<int>>;
-using Edge = pair<int, ll>;
 const ll INF = 1LL << 60;
 const int MAX = 100000;
 const int MOD = 1000000007;
+
+// 辺e = (u, v)を{w(e), {u, v}}で表す
+using Edge = pair<int, pair<int, int>>;
 
 struct UnionFind
 {
@@ -56,43 +59,38 @@ int main()
     // cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
-    int n, m, k, a, b;
-
-    // 入力
-    cin >> n >> m >> k;
-    UnionFind uf(n);
-    //人0〜n-1それぞれについて、友達orブロックの関係にある人の数=あとで引く数
-    vector<int> FoB(n, 0);
-
+    int n, m;
+    cin >> n >> m;
+    // 辺集合
+    vector<Edge> edges(m);
+    ll ans = 0;
     REP(i, m)
-    { //友達関係、union-findを作る
-        cin >> a >> b;
-        // 0オリジン
-        --a;
-        --b;
-        FoB[a] += 1;
-        FoB[b] += 1;
-        uf.unite(a, b);
+    {
+        int u, v, w;
+        cin >> u >> v >> w;
+        edges[i] = Edge(w, make_pair(u, v));
     }
 
-    REP(i, k)
-    { //友達候補ならばブロック関係をFoBに加える。友達とブロックの関係はunion-find除けば同じ。
-        cin >> a >> b;
-        // 0オリジン
-        --a;
-        --b;
-        if (uf.issame(a, b))
-        {
-            FoB[a] += 1;
-            FoB[b] += 1;
-        }
+    // 辺の重み(第一要素)昇順ソート
+    sort(edges.begin(), edges.end());
+
+    // クラスカル法
+    UnionFind uf(n);
+    for (auto &e : edges)
+    {
+        int w = e.first;
+        int u = e.second.first;
+        int v = e.second.second;
+
+        // 既に連結→サイクルが形成されるので追加しない
+        if (uf.issame(u, v))
+            continue;
+
+        // 辺(u, v)を追加
+        ans += w;
+        uf.unite(u, v);
     }
 
-    REP(i, n)
-    {                                    //人iの友達候補の人数を出力
-        cout << uf.size(i) - FoB[i] - 1; //素集合から友達、ブロック、自分の分を引く
-        if (i < n)
-            cout << " ";
-    }
+    cout << ans << "\n";
     return 0;
 }
