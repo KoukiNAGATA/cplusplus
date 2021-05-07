@@ -1,10 +1,18 @@
-#include <iostream>
-#include <vector>
-#include <cstdio>
-#include <string>
-#include <algorithm>
+#include <bits/stdc++.h>
+#define REP(i, n) for (int i = 0; i < n; i++)
+#define REPR(i, n) for (int i = n - 1; i >= 0; i--)
+#define FOR(i, m, n) for (int i = m; i <= n; i++)
+#define FORR(i, m, n) for (int i = m; i >= n; i--)
+#define SORT(v, n) sort(v, v + n)
 using namespace std;
-#define MAX 1000000000
+using ll = long long;
+using vll = vector<ll>;
+using vvll = vector<vector<ll>>;
+using P = pair<ll, ll>;
+using Graph = vector<vector<int>>;
+using Edge = pair<int, ll>;
+const int MAX = 100000;
+const ll INF = 1LL << 60;
 
 long long GCD(long long x, long long y)
 { //最大公約数
@@ -19,22 +27,11 @@ long long LCM(long long x, long long y)
 
 int main()
 {
-    long long a, b;
-    int ans = 1;
-    cin >> a >> b;
-    long long gcd = GCD(a, b);
-    //GCDの約数のなかで素数であるものを探す
-    for (int i = 2; i <= gcd; i++)
-    { //gcdも変化していく
-        if (gcd % i == 0)
-        {
-            ans++;
-        }
-        while (gcd % i == 0)
-        { // 素数で割り切れなくなるまで割っていく
-            gcd /= i;
-        }
-    }
+    ll a, b, c, d;
+    ll ans = 0;
+    cin >> a >> b >> c >> d;
+    ans += b - b / c - b / d + b / LCM(c, d);
+    ans -= a - 1 - (a - 1) / c - (a - 1) / d + (a - 1) / LCM(c, d);
     cout << ans << "\n";
     return 0;
 }
