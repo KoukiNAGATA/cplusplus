@@ -12,7 +12,7 @@ using P = pair<ll, ll>;
 using Graph = vector<vector<int>>;
 using Edge = pair<int, ll>;
 const ll INF = 1LL << 60;
-const int MAX = 100000;
+const int MAX = 200000;
 const int MOD = 1000000007;
 
 int main()
@@ -20,23 +20,21 @@ int main()
     // cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
-    ll n;
-    // 200で割った余りで管理
-    vll a(n + 10), cnt(210, 0);
+    int n;
     cin >> n;
-    ll tmp;
+    vector<int> a(n + 10);
+    // 200で割った余りで管理。無闇にll使わない。
+    vector<int> cnt(210, 0);
     REP(i, n)
-    {
-        cin >> tmp;
-        a[i] = tmp % 200;
-    }
+    cin >> a[i];
 
-    ll ans = 0;
     // a[j]固定して、j>iでa[j]=a[i]を満たす個数を足す
+    ll ans = 0;
     REP(i, n)
     {
-        ans += cnt[a[i]];
-        ++cnt[a[i]];
+        int mo = a[i] % 200;
+        ans += cnt[mo];
+        cnt[mo]++;
     }
     cout << ans << "\n";
     return 0;
