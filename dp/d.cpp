@@ -1,42 +1,47 @@
-#include <iostream>
-#include <vector>
-#include <cstdio>
-#include <string>
-#include <algorithm>
+// ナップサック問題
+#include <bits/stdc++.h>
+#define REP(i, n) for (int i = 0; i < n; i++)
+#define REPR(i, n) for (int i = n - 1; i >= 0; i--)
+#define FOR(i, m, n) for (int i = m; i <= n; i++)
+#define FORR(i, m, n) for (int i = m; i >= n; i--)
+#define SORT(v, n) sort(v, v + n)
 using namespace std;
 using ll = long long;
-const int inf = 1000000007;
+using vll = vector<ll>;
+using vvll = vector<vector<ll>>;
+using P = pair<ll, ll>;
+using Graph = vector<vector<int>>;
+using Edge = pair<int, ll>;
+const ll INF = 1LL << 60;
+const int MAX = 100000;
+const int MOD = 1000000007;
 
 int main()
 {
+    // cin高速化
+    cin.tie(0);
+    ios::sync_with_stdio(false);
     int n;
     ll W; //下のwと重複してしまうので大文字
-    ll w[110], v[110];
+    vll w(110), v(110);
     cin >> n >> W;
-    for (int i = 1; i <= n; i++)
-    {
-        cin >> w[i] >> v[i];
-    }
-    ll dp[110][100010];
+    FOR(i, 1, n)
+    cin >> w[i] >> v[i];
+    vvll dp(110, vll(100010));
 
-    for (int i = 0; i <= n; i++)
-    { //荷物の番目を進めていく。荷物0この場合があるから0〜nやで！
-        for (int j = 0; j <= W; j++)
-        { //荷物の重さ上限を上げていく
-            if (i == 0 || j == 0)
-            {
-                dp[i][j] = 0; //初期値。荷物0個の場合と、重さ0の場合は0
-            }
-            else if (w[i] <= j)
-            {
-                dp[i][j] = max(dp[i - 1][j], v[i] + dp[i - 1][j - w[i]]); //まだw[i]が入るキャパがあるナップサックに荷物を入れて比較する
-            }
+    FOR(i, 0, n)
+    { //荷物i番目までで上限jのときの最大値を求める。O(nW)。荷物0ケの場合がある。
+        FOR(j, 0, W)
+        {                         //荷物の重さ上限を上げていく
+            if (i == 0 || j == 0) //初期値。荷物0個の場合と、重さ0の場合は0
+                dp[i][j] = 0;
+            else if (w[i] <= j) // w[i]が入るキャパがある→ギリギリ入るナップサックに荷物を入れて比較する
+                dp[i][j] = max(dp[i - 1][j], v[i] + dp[i - 1][j - w[i]]);
             else
-            {
                 dp[i][j] = dp[i - 1][j];
-            }
         }
     }
+    //荷物n番目までで上限Wのときの最大値
     cout << dp[n][W] << "\n";
     return 0;
 }
