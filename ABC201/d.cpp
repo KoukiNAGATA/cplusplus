@@ -16,7 +16,7 @@ const int MAX = 100000;
 const int MOD = 1000000007;
 int h, w;
 
-int game_count(int a, int b, Graph &grid, Graph &dp, Graph &flag)
+int gameCount(int a, int b, Graph &grid, Graph &dp, Graph &flag)
 {                   //そのマスからゴールまでの高橋くんの最大値を返す。メモ化再帰
     if (flag[a][b]) // 訪問済み
         return dp[a][b];
@@ -26,20 +26,20 @@ int game_count(int a, int b, Graph &grid, Graph &dp, Graph &flag)
     if ((a + b) % 2 == 0) // 高橋くんの番
     {
         if (a == h) // 右にのみいける
-            res = game_count(a, b + 1, grid, dp, flag) + grid[a][b + 1];
+            res = gameCount(a, b + 1, grid, dp, flag) + grid[a][b + 1];
         else if (b == w) // 下にのみいける
-            res = game_count(a + 1, b, grid, dp, flag) + grid[a + 1][b];
+            res = gameCount(a + 1, b, grid, dp, flag) + grid[a + 1][b];
         else
-            res = max(game_count(a + 1, b, grid, dp, flag) + grid[a + 1][b], game_count(a, b + 1, grid, dp, flag) + grid[a][b + 1]);
+            res = max(gameCount(a + 1, b, grid, dp, flag) + grid[a + 1][b], gameCount(a, b + 1, grid, dp, flag) + grid[a][b + 1]);
     }
     else // 青木くんの番→青木くんが最適になるように動く
     {
         if (a == h) // 右にのみいける
-            res = game_count(a, b + 1, grid, dp, flag) - grid[a][b + 1];
+            res = gameCount(a, b + 1, grid, dp, flag) - grid[a][b + 1];
         else if (b == w) // 下にのみいける
-            res = game_count(a + 1, b, grid, dp, flag) - grid[a + 1][b];
+            res = gameCount(a + 1, b, grid, dp, flag) - grid[a + 1][b];
         else
-            res = min(game_count(a + 1, b, grid, dp, flag) - grid[a + 1][b], game_count(a, b + 1, grid, dp, flag) - grid[a][b + 1]);
+            res = min(gameCount(a + 1, b, grid, dp, flag) - grid[a + 1][b], gameCount(a, b + 1, grid, dp, flag) - grid[a][b + 1]);
     }
     // 訪問
     flag[a][b] = 1;
@@ -69,7 +69,7 @@ int main()
     }
 
     int cnt = 0;
-    cnt = game_count(1, 1, grid, dp, flag);
+    cnt = gameCount(1, 1, grid, dp, flag);
 
     string ans;
     if (cnt > 0)
