@@ -15,13 +15,16 @@ const ll INF = 1LL << 60;
 const int MAX = 100000;
 const int MOD = 1000000007;
 
+double dp[310][310][310];
+int a[310], c[4];
+
 int main()
 {
     // cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
-    int n, a[303], c[4];
-    double dp[303][303][303];
+    int n;
+    // 入力
     cin >> n;
     REP(i, n)
     cin >> a[i];
