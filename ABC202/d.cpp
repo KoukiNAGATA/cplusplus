@@ -52,6 +52,7 @@ int main()
             --b;
         }
     }
+    // a, bの最後に残っている個数分出力
     cout << string(a, 'a');
     cout << string(b, 'b');
     cout << '\n';
