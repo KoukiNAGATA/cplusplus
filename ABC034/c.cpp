@@ -54,7 +54,10 @@ ll combination(ll a, ll b)
 
 int main()
 {
-    int n;
-    cin >> n;
+    int w, h;
+    cin >> w >> h;
+    --w;
+    --h;
     init();
+    cout << combination(w + h, w) << "\n";
 }
