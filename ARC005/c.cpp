@@ -18,9 +18,7 @@ using vvll = vector<vector<ll>>;
 using P = pair<ll, ll>;
 using p = pair<int, int>;
 
-int bfs(int)
-
-    int main()
+int main()
 {
     // cin高速化
     cin.tie(0);

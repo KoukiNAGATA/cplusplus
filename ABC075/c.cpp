@@ -1,19 +1,20 @@
-// UnionFindの実用
+// UnionFind
 #include <bits/stdc++.h>
 #define REP(i, n) for (int i = 0; i < n; i++)
 #define REPR(i, n) for (int i = n - 1; i >= 0; i--)
 #define FOR(i, m, n) for (int i = m; i <= n; i++)
 #define FORR(i, m, n) for (int i = m; i >= n; i--)
 #define SORT(v, n) sort(v, v + n)
-#define MAX 100000
-#define inf 1000000007
-#define mod 1000000007
 using namespace std;
 using ll = long long;
 using vll = vector<ll>;
 using vvll = vector<vector<ll>>;
 using P = pair<ll, ll>;
 using Graph = vector<vector<int>>;
+using Edge = pair<int, ll>;
+const ll INF = 1LL << 60;
+const int MAX = 100000;
+const int MOD = 1000000007;
 
 struct UnionFind
 {
@@ -63,16 +64,21 @@ int main()
     REP(i, m)
     {
         int a, b;
-        cin >> g[i].first >> g[i].second;
+        cin >> a >> b;
+        --a;
+        --b;
+        g[i] = make_pair(a, b);
     }
 
+    // ある辺がない場合について全探索
     REP(i, m)
-    {                    // 各辺がない場合について全探索
+    {
         UnionFind uf(n); //初期化
         REP(j, m)
         {
+            // 省く辺
             if (i == j)
-                continue; // 省く辺
+                continue;
             uf.unite(g[j].first, g[j].second);
         }
 
