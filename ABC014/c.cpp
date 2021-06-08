@@ -13,43 +13,32 @@ using P = pair<ll, ll>;
 using Graph = vector<vector<int>>;
 using Edge = pair<int, ll>;
 const int INF = 1 << 30;
-const int MAX = 200000;
+const int MAX = 1e6;
 const int MOD = 1000000007;
-
-// 区間を終端時刻で大小比較する関数
-bool cmp(const P &a, const P &b)
-{
-    return a.second < b.second;
-}
 
 int main()
 {
     // cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
-    ll n, w;
-    cin >> n >> w;
+    ll n;
+    cin >> n;
     vll res(MAX + 10, 0);
     REP(i, n)
     {
-        ll s, t, p;
-        cin >> s >> t >> p;
-        res[s] += p;
-        res[t] -= p;
+        ll a, b;
+        cin >> a >> b;
+        ++res[a];
+        --res[b + 1];
     }
     // 累積和
     FOR(i, 1, MAX)
     res[i] += res[i - 1];
     // 最大値
-    ll ma = 0;
-    REP(i, MAX)
-    ma = max(ma, res[i]);
+    ll ans = 0;
+    FOR(i, 0, MAX)
+    ans = max(ans, res[i]);
 
-    if (ma > w)
-        cout << "No"
-             << "\n";
-    else
-        cout << "Yes"
-             << "\n";
+    cout << ans << "\n";
     return 0;
 }
