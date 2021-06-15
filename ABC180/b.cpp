@@ -38,6 +38,6 @@ int main()
     // チェビシェフ
     ans = 0;
     REP(i, n)
-    ans = max(ans, a[i]);
+    ans = max(ans, abs(a[i]));
     cout << ans << "\n";
 }
