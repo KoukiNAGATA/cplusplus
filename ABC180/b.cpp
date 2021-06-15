@@ -11,24 +11,33 @@ using vvll = vector<vector<ll>>;
 using P = pair<ll, ll>;
 using Graph = vector<vector<int>>;
 using Edge = pair<int, ll>;
-const int MAX = 100000;
 const ll INF = 1LL << 60;
+const int MAX = 200000;
+const int MOD = 1000000007;
 
 int main()
 {
     // cin高速化
     cin.tie(0);
     ios::sync_with_stdio(false);
-    ll x, y, a, b, ans;
-    cin >> x >> y >> a >> b;
+    ll n;
+    cin >> n;
+    vll a(n);
+    REP(i, n)
+    cin >> a[i];
+    // マンハッタン
+    ll ans = 0;
+    REP(i, n)
+    ans += abs(a[i]);
+    cout << ans << "\n";
+    // ユークリッド
     ans = 0;
-    // x = ax
-    while (x < y / a && a * x <= x + b)
-    {
-        x *= a;
-        ans++;
-    }
-    // x = x + b 超えないギリギリ(y - 1 - xまで) + bする
-    cout << ans + (y - 1 - x) / b << "\n";
-    return 0;
+    REP(i, n)
+    ans += a[i] * a[i];
+    cout << fixed << setprecision(10) << (double)sqrt(ans) << "\n";
+    // チェビシェフ
+    ans = 0;
+    REP(i, n)
+    ans = max(ans, a[i]);
+    cout << ans << "\n";
 }
