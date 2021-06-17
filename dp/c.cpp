@@ -16,7 +16,7 @@ using Grid = vector<vector<bool>>;
 
 int main()
 {
-    int n, max;
+    int n, ans;
     int a[100001];
     int b[100001];
     int c[100001];
@@ -37,24 +37,24 @@ int main()
     if (n == 1)
     {
         // n日目の3数を比べる
-        max = std::max(dp[n][0], dp[n][1]);
-        max = std::max(max, dp[n][2]);
+        ans = max(dp[n][0], dp[n][1]);
+        ans = max(ans, dp[n][2]);
 
-        cout << max << "\n";
+        cout << ans << "\n";
         return 0;
     }
 
     FOR(i, 2, n)
     { // 前日にした行いによってその日の状態が変わる。n日目まである。
-        dp[i][0] = std::max(dp[i - 1][1] + a[i - 1], dp[i - 1][2] + a[i - 1]);
-        dp[i][1] = std::max(dp[i - 1][0] + b[i - 1], dp[i - 1][2] + b[i - 1]);
-        dp[i][2] = std::max(dp[i - 1][0] + c[i - 1], dp[i - 1][1] + c[i - 1]);
+        dp[i][0] = max(dp[i - 1][1] + a[i - 1], dp[i - 1][2] + a[i - 1]);
+        dp[i][1] = max(dp[i - 1][0] + b[i - 1], dp[i - 1][2] + b[i - 1]);
+        dp[i][2] = max(dp[i - 1][0] + c[i - 1], dp[i - 1][1] + c[i - 1]);
     }
 
     // n日目の3数を比べる
-    max = std::max(dp[n][0], dp[n][1]);
-    max = std::max(max, dp[n][2]);
+    ans = max(dp[n][0], dp[n][1]);
+    ans = max(ans, dp[n][2]);
 
-    cout << max << "\n";
+    cout << ans << "\n";
     return 0;
 }
